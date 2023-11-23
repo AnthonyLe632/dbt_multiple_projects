@@ -1,0 +1,151 @@
+
+version: 2
+
+models:
+  - name: raw_customers
+    description: This table contains raw customer data with details such as customer ID, unique ID, zip code prefix, city, and state.
+    columns:
+      - name: customer_id
+        description: The unique identifier for each customer.
+      - name: customer_unique_id
+        description: A globally unique identifier associated with each customer.
+      - name: customer_zip_code_prefix
+        description: The numerical prefix of the customer's zip code.
+      - name: customer_city
+        description: The city where the customer is located.
+      - name: customer_state
+        description: The state or region where the customer is located.
+  - name: raw_geolocation
+    description: This table contains raw geolocation data with information about different locations.
+    columns:
+      - name: geolocation_zip_code_prefix
+        description: The numerical prefix of the zip code associated with the location.
+      - name: geolocation_lat 
+        description: The latitude coordinate of the location.
+      - name: geolocation_lng
+        description: The longitude coordinate of the location.
+      - name: geolocation_city
+        description: The city associated with the location.
+      - name: geolocation_state
+        description: The state or region associated with the location.
+  - name: raw_geo_data
+    description: This table contains raw geolocation data with information about different locations.
+    columns:
+      - name: id
+        description: id of each row
+      - name: geolocation_zip_code_prefix
+        description: The numerical prefix of the zip code associated with the location.
+      - name: geolocation_lat 
+        description: The latitude coordinate of the location.
+      - name: geolocation_lng
+        description: The longitude coordinate of the location.
+      - name: geolocation_city
+        description: The city associated with the location.
+      - name: geolocation_state
+        description: The state or region associated with the location.
+  - name: raw_order_items
+    description: This table contains raw order items data with details such as order ID, order item ID, product ID, seller ID, shipping limit date, price, and freight value.
+    columns:
+      - name: order_id
+        description: The unique identifier for each order.
+      - name: order_item_id
+        description: The identifier for each order item within an order.
+      - name: product_id
+        description: The unique identifier for each product.
+      - name: seller_id
+        description: The unique identifier for each seller.
+      - name: shipping_limit_date
+        description: The deadline for shipping the order item.
+      - name: price
+        description: The price of the order item.
+      - name: freight_value
+        description: The cost of shipping for the order item.
+  - name: raw_order_payments
+    description: This table contains raw order payments data with details such as order ID, payment sequential, payment type, payment installments, and payment value.
+    columns:
+      - name: order_id
+        description: The unique identifier for each order.
+      - name: payment_sequential
+        description: The sequential number assigned to each payment within an order.
+      - name: payment_type
+        description: The type of payment used for the order.
+      - name: payment_installments
+        description: The number of installments for the payment.
+      - name: payment_value
+        description: The value of the payment for the order.
+  - name: raw_order_reviews
+    description: This table contains raw order reviews data with details such as review ID, order ID, review score, review comment title, review comment message, review creation date, and review answer timestamp.
+    columns:
+      - name: review_id
+        description: The unique identifier for each review.
+      - name: order_id
+        description: The unique identifier for the order associated with the review.
+      - name: review_score
+        description: The score given in the review, typically on a scale from 1 to 5.
+      - name: review_comment_title
+        description: The title or summary of the review comment.
+      - name: review_comment_message
+        description: The detailed message or content of the review.
+      - name: review_creation_date
+        description: The date when the review was created.
+      - name: review_answer_timestamp
+        description: The timestamp indicating when the review was answered, if applicable.
+models:
+  - name: raw_orders
+    description: This table contains raw order data with details such as order ID, customer ID, order status, order purchase timestamp, order approved timestamp, order delivery carrier date, order delivery customer date, and estimated delivery date.
+    columns:
+      - name: order_id
+        description: The unique identifier for each order.
+      - name: customer_id
+        description: The unique identifier for the customer associated with the order.
+      - name: order_status
+        description: The status of the order (e.g., processing, shipped, delivered).
+      - name: order_purchase_timestamp
+        description: The timestamp when the order was initially purchased.
+      - name: order_approved_at
+        description: The timestamp when the order was approved.
+      - name: order_delivery_carrier_date
+        description: The date when the order was handed over to the carrier for delivery.
+      - name: order_delivery_customer_date
+        description: The date when the order was delivered to the customer.
+      - name: order_estimated_delivery_date
+        description: The estimated delivery date for the order.
+  - name: raw_products
+    description: This table contains raw product data with details such as product ID, product category name, product name length, production description length, product photos quantity, product weight (grams), product length (cm), product height (cm), and product width (cm).
+    columns:
+      - name: product_id
+        description: The unique identifier for each product.
+      - name: product_category_name
+        description: The name of the product category to which the product belongs.
+      - name: product_name_length
+        description: The length of the product name.
+      - name: production_description_length
+        description: The length of the production description for the product.
+      - name: product_photos_qty
+        description: The quantity of photos associated with the product.
+      - name: product_weight_g
+        description: The weight of the product in grams.
+      - name: product_length_cm
+        description: The length of the product in centimeters.
+      - name: product_height_cm
+        description: The height of the product in centimeters.
+      - name: product_width_cm
+        description: The width of the product in centimeters.
+  - name: raw_sellers
+    description: This table contains raw seller data with details such as seller ID, seller zip code prefix, seller city, and seller state.
+    columns:
+      - name: seller_id
+        description: The unique identifier for each seller.
+      - name: seller_zip_code_prefix
+        description: The numerical prefix of the seller's zip code.
+      - name: seller_city
+        description: The city where the seller is located.
+      - name: seller_state
+        description: The state or region where the seller is located.
+  - name: raw_prodct_cat_name_trans
+    description: This table contains raw product category name translations with details such as the original product category name and its English translation.
+    columns:
+      - name: product_category_name
+        description: The original product category name.
+      - name: product_category_name_english
+        description: The English translation of the product category name.
