@@ -7,14 +7,24 @@ models:
     columns:
       - name: customer_id
         description: The unique identifier for each customer.
+        tests:
+        - not_null
       - name: customer_unique_id
         description: A globally unique identifier associated with each customer.
+        tests:
+        - not_null
       - name: customer_zip_code_prefix
         description: The numerical prefix of the customer's zip code.
+        tests:
+        - not_null
       - name: customer_city
         description: The city where the customer is located.
+        tests:
+        - not_null
       - name: customer_state
         description: The state or region where the customer is located.
+        tests:
+        - not_null
   - name: raw_geolocation
     description: This table contains raw geolocation data with information about different locations.
     columns:
