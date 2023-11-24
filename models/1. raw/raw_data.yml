@@ -90,7 +90,6 @@ models:
         description: The date when the review was created.
       - name: review_answer_timestamp
         description: The timestamp indicating when the review was answered, if applicable.
-models:
   - name: raw_orders
     description: This table contains raw order data with details such as order ID, customer ID, order status, order purchase timestamp, order approved timestamp, order delivery carrier date, order delivery customer date, and estimated delivery date.
     columns:
