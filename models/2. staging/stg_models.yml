@@ -1,0 +1,164 @@
+
+version: 2
+
+models:
+  - name: stg_customers
+    description: This table contains raw customer data with details such as customer ID, unique ID, zip code prefix, city, and state.
+    columns:
+      - name: customer_id
+        description: The unique identifier for each customer.
+        tests:
+        - not_null
+      - name: customer_unique_id
+        description: A globally unique identifier associated with each customer.
+        tests:
+        - not_null
+      - name: customer_zip_code_prefix
+        description: The numerical prefix of the customer's zip code.
+        tests:
+        - not_null
+      - name: customer_city
+        description: The city where the customer is located.
+        tests:
+        - not_null
+      - name: customer_state
+        description: The state or region where the customer is located.
+        tests:
+        - not_null
+  - name: stg_geoloc
+    description: This table contains raw geolocation data with information about different locations.
+    columns:
+      - name: geoloc_zip_code_prefix
+        description: The numerical prefix of the zip code associated with the location.
+      - name: geoloc_lat 
+        description: The latitude coordinate of the location.
+      - name: geoloc_lng
+        description: The longitude coordinate of the location.
+      - name: geoloc_city
+        description: The city associated with the location.
+      - name: geoloc_state
+        description: The state or region associated with the location.
+  - name: stg_geo_data
+    description: This table contains raw geolocation data with information about different locations.
+    columns:
+      - name: id
+        description: id of each row
+      - name: geoloc_zip_code_prefix
+        description: The numerical prefix of the zip code associated with the location.
+      - name: geoloc_lat 
+        description: The latitude coordinate of the location.
+      - name: geoloc_lng
+        description: The longitude coordinate of the location.
+      - name: geoloc_city
+        description: The city associated with the location.
+      - name: geoloc_state
+        description: The state or region associated with the location.
+  - name: stg_order_items
+    description: This table contains raw order items data with details such as order ID, order item ID, product ID, seller ID, shipping limit date, price, and freight value.
+    columns:
+      - name: order_id
+        description: The unique identifier for each order.
+      - name: order_item_id
+        description: The identifier for each order item within an order.
+      - name: prod_id
+        description: The unique identifier for each product.
+      - name: seller_id
+        description: The unique identifier for each seller.
+      - name: ship_lim_datetime
+        description: The deadline for shipping the order item, in full YYYY-MM-DD HH-MM-SS format.
+      - name: ship_lim_date
+        description: The deadline for shipping the order item, in full YYYY-MM-DD format.
+      - name: ship_lim_time
+        description: The deadline for shipping the order item, in full HH-MM-SS format.
+      - name: item_price
+        description: The price of the order item.
+      - name: freight_value
+        description: The cost of shipping for the order item.
+  - name: stg_order_payments
+    description: This table contains raw order payments data with details such as order ID, payment sequential, payment type, payment installments, and payment value.
+    columns:
+      - name: order_id
+        description: The unique identifier for each order.
+      - name: payment_sequential
+        description: The sequential number assigned to each payment within an order.
+      - name: payment_type
+        description: The type of payment used for the order.
+      - name: payment_installments
+        description: The number of installments for the payment.
+      - name: payment_value
+        description: The value of the payment for the order.
+  - name: stg_order_reviews
+    description: This table contains raw order reviews data with details such as review ID, order ID, review score, review comment title, review comment message, review creation date, and review answer timestamp.
+    columns:
+      - name: rev_id
+        description: The unique identifier for each review.
+      - name: order_id
+        description: The unique identifier for the order associated with the review.
+      - name: rev_score
+        description: The score given in the review, typically on a scale from 1 to 5.
+      - name: rev_cmt_title
+        description: The title or summary of the review comment.
+      - name: rev_cmt_message
+        description: The detailed message or content of the review.
+      - name: rev_creation_date
+        description: The date when the review was created.
+      - name: rev_answer_timestamp
+        description: The timestamp indicating when the review was answered, if applicable.
+  - name: stg_orders
+    description: This table contains raw order data with details such as order ID, customer ID, order status, order purchase timestamp, order approved timestamp, order delivery carrier date, order delivery customer date, and estimated delivery date.
+    columns:
+      - name: order_id
+        description: The unique identifier for each order.
+      - name: customer_id
+        description: The unique identifier for the customer associated with the order.
+      - name: po_status
+        description: The status of the order (e.g., processing, shipped, delivered).
+      - name: po_timestamp
+        description: The timestamp when the order was initially purchased.
+      - name: po_approved_at
+        description: The timestamp when the order was approved.
+      - name: po_delivery_carrier_date
+        description: The date when the order was handed over to the carrier for delivery.
+      - name: po_delivery_customer_date
+        description: The date when the order was delivered to the customer.
+      - name: po_est_delivery_date
+        description: The estimated delivery date for the order.
+  - name: stg_products
+    description: This table contains raw product data with details such as product ID, product category name, product name length, production description length, product photos quantity, product weight (grams), product length (cm), product height (cm), and product width (cm).
+    columns:
+      - name: prod_id
+        description: The unique identifier for each product.
+      - name: prod_cat_name
+        description: The name of the product category to which the product belongs.
+      - name: prod_name_len
+        description: The length of the product name.
+      - name: production_descr_len
+        description: The length of the production description for the product.
+      - name: prod_photos_qty
+        description: The quantity of photos associated with the product.
+      - name: prod_wt_g
+        description: The weight of the product in grams.
+      - name: prod_len_cm
+        description: The length of the product in centimeters.
+      - name: prod_h_cm
+        description: The height of the product in centimeters.
+      - name: prod_w_cm
+        description: The width of the product in centimeters.
+  - name: stg_sellers
+    description: This table contains raw seller data with details such as seller ID, seller zip code prefix, seller city, and seller state.
+    columns:
+      - name: seller_id
+        description: The unique identifier for each seller.
+      - name: seller_zip_code_prefix
+        description: The numerical prefix of the seller's zip code.
+      - name: seller_city
+        description: The city where the seller is located.
+      - name: seller_state
+        description: The state or region where the seller is located.
+  - name: stg_prdct_cat_name_trans
+    description: This table contains raw product category name translations with details such as the original product category name and its English translation.
+    columns:
+      - name: prod_cat_name
+        description: The original product category name.
+      - name: prod_cat_name_en
+        description: The English translation of the product category name.
