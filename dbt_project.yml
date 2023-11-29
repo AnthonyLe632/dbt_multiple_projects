@@ -37,8 +37,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   brazillian_ecom_dbt:
-    # Applies to all files under models/example/
-    1. raw:
-      +materialized: view
-    2. staging:
-      +materialized: table
+    ecommerce:
+      1. raw:
+        materialized: view
+      2. staging:
+        materialized: table
+    marketing:
+      1. raw:
+        materialized: view
+      2. staging:
+        materialized: table
