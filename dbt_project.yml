@@ -2,12 +2,12 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'brazillian_ecom_dbt'
+name: 'dbt_multiple_projects'
 version: '1.0.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'brazillian_ecom_dbt'
+profile: 'dbt_longle'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -36,14 +36,32 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  brazillian_ecom_dbt:
+  dbt_multiple_projects:
     ecommerce:
       1. raw:
         materialized: view
+        +database: brazilian_ecom
       2. staging:
         materialized: table
+        +database: brazilian_ecom
+      3. final:
+        materialized: table
+        +database: brazilian_ecom
     marketing:
       1. raw:
         materialized: view
+        +database: brazilian_ecom
       2. staging:
         materialized: table
+        +database: brazilian_ecom
+
+    private:
+      1. raw:
+        materialized: view
+        +database: dbt_private
+      2. staging:
+        materialized: table
+        +database: dbt_private
+      3. final:
+        materialized: table
+        +database: dbt_private
