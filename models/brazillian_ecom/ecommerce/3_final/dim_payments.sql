@@ -2,7 +2,7 @@ WITH
 stg_order_payments AS (SELECT * FROM {{ ref('stg_order_payments') }}),
 stg_orders AS (SELECT * FROM {{ ref('stg_orders') }}),
 
-int_payments AS (
+dim_payments AS (
     SELECT
         p.order_id
         , payment_sequential
@@ -12,4 +12,4 @@ int_payments AS (
     FROM stg_order_payments AS p
     LEFT JOIN stg_orders USING(order_id)
 )
-SELECT * FROM int_payments
+SELECT * FROM dim_payments

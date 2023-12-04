@@ -2,7 +2,7 @@ WITH
 stg_products AS (SELECT * FROM {{ ref('stg_products') }}),
 stg_prdct_cat_name_trans AS (SELECT * FROM {{ ref('stg_prdct_cat_name_trans') }}),
 
-int_products AS (
+dim_products AS (
     SELECT
         prod_id
         , prod_cat_name_en AS prod_category
@@ -15,4 +15,4 @@ int_products AS (
     FROM stg_products
     LEFT JOIN stg_prdct_cat_name_trans USING(prod_cat_name)
 )
-SELECT * FROM int_products
+SELECT * FROM dim_products

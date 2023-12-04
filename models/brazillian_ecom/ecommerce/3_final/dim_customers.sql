@@ -3,7 +3,7 @@ stg_customers AS (SELECT * FROM {{ ref('stg_customers') }}),
 stg_orders AS (SELECT * FROM {{ ref('stg_orders') }}),
 stg_order_items AS (SELECT * FROM {{ ref('stg_order_items') }}),
 
-int_customers AS (
+dim_customers AS (
     SELECT 
         customer_id
         , customer_unique_id
@@ -20,4 +20,4 @@ int_customers AS (
     LEFT JOIN stg_order_items AS oi USING (order_id)
     GROUP BY c.customer_id, c.customer_unique_id, c.customer_zip_code_prefix
 )
-SELECT * FROM int_customers
+SELECT * FROM dim_customers

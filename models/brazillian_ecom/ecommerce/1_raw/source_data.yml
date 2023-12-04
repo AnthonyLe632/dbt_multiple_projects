@@ -38,21 +38,6 @@ models:
         description: The city associated with the location.
       - name: geolocation_state
         description: The state or region associated with the location.
-  - name: raw_geo_data
-    description: This table contains raw geolocation data with information about different locations.
-    columns:
-      - name: id
-        description: id of each row
-      - name: geolocation_zip_code_prefix
-        description: The numerical prefix of the zip code associated with the location.
-      - name: geolocation_lat 
-        description: The latitude coordinate of the location.
-      - name: geolocation_lng
-        description: The longitude coordinate of the location.
-      - name: geolocation_city
-        description: The city associated with the location.
-      - name: geolocation_state
-        description: The state or region associated with the location.
   - name: raw_order_items
     description: This table contains raw order items data with details such as order ID, order item ID, product ID, seller ID, shipping limit date, price, and freight value.
     columns:
