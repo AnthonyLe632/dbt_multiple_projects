@@ -1,7 +1,7 @@
-WITH raw_customers AS (SELECT * FROM {{ ref('raw_customers') }}),
+WITH 
+raw_customers AS (SELECT * FROM {{ ref('raw_customers') }}),
 
 stg_customers AS (
-
     SELECT
         CAST(customer_id AS {{ dbt.type_string()}} ) AS customer_id
         , CAST(customer_unique_id AS {{ dbt.type_string()}} ) AS customer_unique_id
@@ -9,7 +9,5 @@ stg_customers AS (
         , CAST(customer_city AS {{ dbt.type_string() }}) AS customer_city
         , CAST(customer_state AS {{ dbt.type_string() }}) AS customer_state
     FROM raw_customers
-
 )
-
 SELECT * FROM stg_customers

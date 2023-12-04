@@ -111,17 +111,17 @@ models:
         description: The unique identifier for each order.
       - name: customer_id
         description: The unique identifier for the customer associated with the order.
-      - name: po_status
+      - name: order_status
         description: The status of the order (e.g., processing, shipped, delivered).
-      - name: po_timestamp
+      - name: order_timestamp
         description: The timestamp when the order was initially purchased.
-      - name: po_approved_at
+      - name: order_approved_at
         description: The timestamp when the order was approved.
-      - name: po_delivery_carrier_date
+      - name: order_delivery_carrier_date
         description: The date when the order was handed over to the carrier for delivery.
-      - name: po_delivery_customer_date
+      - name: order_delivery_customer_date
         description: The date when the order was delivered to the customer.
-      - name: po_est_delivery_date
+      - name: order_est_delivery_date
         description: The estimated delivery date for the order.
   - name: stg_products
     description: This table contains raw product data with details such as product ID, product category name, product name length, production description length, product photos quantity, product weight (grams), product length (cm), product height (cm), and product width (cm).

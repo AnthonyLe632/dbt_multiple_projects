@@ -1,7 +1,7 @@
-WITH raw_products AS (SELECT * FROM {{ ref('raw_products') }}),
+WITH 
+raw_products AS (SELECT * FROM {{ ref('raw_products') }}),
 
 stg_products AS (
-
     SELECT
         CAST(product_id AS {{ dbt.type_string() }}) AS prod_id
         , CAST(product_category_name AS {{ dbt.type_string() }}) AS prod_cat_name
@@ -13,7 +13,6 @@ stg_products AS (
         , CAST(product_height_cm AS {{ dbt.type_float() }}) AS prod_h_cm
         , CAST(product_width_cm AS {{ dbt.type_float() }}) AS prod_w_cm
     FROM raw_products
-
+    WHERE product_category_name IS NOT NULL
 )
-
 SELECT * FROM stg_products

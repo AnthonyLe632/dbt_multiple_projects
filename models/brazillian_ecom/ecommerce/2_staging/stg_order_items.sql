@@ -1,7 +1,7 @@
-WITH raw_order_items as (SELECT * FROM {{ ref('raw_order_items') }}),
+WITH 
+raw_order_items as (SELECT * FROM {{ ref('raw_order_items') }}),
 
 stg_order_items AS (
-
     SELECT
         CAST(order_id AS {{ dbt.type_string() }}) AS order_id
         , CAST(order_item_id AS {{ dbt.type_int() }}) AS order_item_id
@@ -13,7 +13,5 @@ stg_order_items AS (
         , CAST(price AS {{ dbt.type_float() }}) AS item_price
         , CAST(freight_value as {{ dbt.type_float() }}) AS freight_value
     FROM raw_order_items 
-
 )
-
 SELECT * FROM stg_order_items
