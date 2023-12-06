@@ -1,0 +1,8 @@
+packages:
+- package: dbt-labs/dbt_utils
+  version: 1.1.1
+- package: dbt-labs/dbt_external_tables
+  version: 0.8.7
+- package: dbt-labs/audit_helper
+  version: 0.9.0
+sha1_hash: 496af95997a2ef9f2bc11903a46cb95812b43009
