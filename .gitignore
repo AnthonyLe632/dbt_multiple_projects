@@ -6,3 +6,4 @@ logs/
 /profiles.yml
 package-lock.yml
 .user.yml
+package-lock.yml
