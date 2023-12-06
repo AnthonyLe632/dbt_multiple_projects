@@ -4,5 +4,5 @@ target/
 dbt_packages/
 logs/
 /profiles.yml
-.packages-lock.yml
+package-lock.yml
 .user.yml
