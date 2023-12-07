@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: bigquery
+    description: ''
+    database: spheric-radio-397503
+    schema: brazillian_ecom
+    tags: 
+      - 'be_ops'
+    tables:
+      - name: customers
+      - name: geolocation
+      - name: order_items
+      - name: order_payments
+      - name: order_reviews
+      - name: stg_brazillian_ecom__orders
+      - name: orders_dataset
+      - name: product_category_name_translation
+      - name: products_dataset
+      - name: sellers

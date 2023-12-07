@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: stg_anom_ecom__laz_data
+  - name: stg_anom_ecom__shp_data  

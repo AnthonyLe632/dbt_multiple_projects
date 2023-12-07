@@ -37,5 +37,46 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   dbt_multiple_projects:
-    +materialized: table
     brazillian_ecom:
+      staging:
+        +materialized: view
+        operations:
+          +tags: 'be_ops'
+        marketing:
+          +tags: 'be_mkt'
+      intermediate:
+        +materialized: ephemeral
+        finance:
+          +tags: 'be_fin'
+      mart:
+        +materialized: table
+        +docs:
+          node_color: '#7D3C98'
+        operations:
+          +schema: operations
+          +tags: 'be_ops'
+        marketing:
+          +schema: marketing
+          +tags: 'be_mkt'
+        finance:
+          +schema: finance
+          +tags: 'be_fin'
+
+    anom_ecom:
+      staging:
+        +materialized: view
+      intermediate:
+        +materialized: ephemeral
+      mart:
+        +materialized: table
+
+    utilities:
+      +materialized: table
+      intermediate:
+        +materialized: ephemeral
+
+    seed:
+      -name: exchange_rate_real_to_usd
+      config:
+        schema: seed_data
+        +materialized: ephemeral

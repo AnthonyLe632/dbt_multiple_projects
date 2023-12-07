@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: bigquery
+    description: ''
+    database: spheric-radio-397503
+    schema: brazillian_ecom
+    tags: 
+      - 'be_mkt'
+    tables:
+      - name: closed_deals_dataset
+      - name: marketing_qualified_leads_dataset
