@@ -8,9 +8,15 @@ dim_customers AS (
         customer_id
         , customer_unique_id
         , customer_zip_code_prefix
-        , SUM(is_completed) AS orders_completed_total
-        , SUM(is_failed) AS orders_failed_total
-        , SUM(is_ongoing) AS orders_ongoing_total
+        , SUM(CASE
+                WHEN order_status IN ('delivered', 'invoiced') 
+                THEN 1 ELSE 0 END) orders_completed_total
+        , SUM(CASE 
+                WHEN order_status IN ('canceled', 'unavailable') 
+                THEN 1 ELSE 0 END) AS orders_failed_total
+        , SUM(CASE 
+                WHEN order_status NOT IN ('delivered', 'invoiced', 'canceled','unavailable')
+                THEN 1 ELSE 0 END) AS orders_ongoing_total
         , COUNT(o.order_id) AS total_order_purchased
         , COUNT(oi.order_item_id) AS total_item_purchased
         , SUM(oi.item_price) AS total_gmv_bought

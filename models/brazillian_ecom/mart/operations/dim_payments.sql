@@ -6,7 +6,7 @@ dim_payments AS (
     SELECT
         p.order_id
         , payment_sequential
-        , payment_type
+        , payment_types
         , payment_installments
         , payment_value
     FROM stg_brazillian_ecom__order_payments AS p
