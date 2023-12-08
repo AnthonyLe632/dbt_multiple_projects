@@ -41,42 +41,62 @@ models:
       staging:
         +materialized: view
         operations:
-          +tags: 'be_ops'
+          +tags: 
+            - 'be_ecom'
+            - 'be_ops'
         marketing:
-          +tags: 'be_mkt'
+          +tags: 
+            - 'be_mkt'
+            - 'be_ecom'
       intermediate:
         +materialized: ephemeral
         finance:
-          +tags: 'be_fin'
+          +tags: 
+            - 'be_fin'
+            - 'be_ecom'
       mart:
         +materialized: table
         +docs:
           node_color: '#7D3C98'
         operations:
           +schema: operations
-          +tags: 'be_ops'
+          +tags: 
+            - 'be_ops'
+            - 'be_ecom'
         marketing:
           +schema: marketing
-          +tags: 'be_mkt'
+          +tags: 
+            - 'be_mkt'
+            - 'be_ecom'
         finance:
           +schema: finance
-          +tags: 'be_fin'
+          +tags:
+            - 'be_fin'
+            - 'be_ecom'
 
     anom_ecom:
       staging:
         +materialized: view
+        +tags: 
+          - 'anom_stg'
+          - 'anom_ecom'
       intermediate:
         +materialized: ephemeral
+        +tags: 
+          - 'anom_int'
+          - 'anom_ecom'
       mart:
         +materialized: table
+        +tags: 
+          - 'anom_mrt'
+          - 'anom_ecom'
 
     utilities:
       +materialized: table
       intermediate:
         +materialized: ephemeral
 
-    seed:
-      -name: exchange_rate_real_to_usd
-      config:
-        schema: seed_data
-        +materialized: ephemeral
+seeds:
+  dbt_multiple_projects:
+    +docs:
+      node_color: "orange"
