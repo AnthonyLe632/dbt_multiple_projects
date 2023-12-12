@@ -1,5 +1,5 @@
 {%- set metadata_cols = ['creation_time', 'project_id', 'job_id', 'job_type', 'statement_type', 'start_time', 
-                        'end_time', 'state', 'total_bytes_processed', 'total_slot_ms', 'query'
+                        'end_time', 'state', 'total_bytes_processed', 'total_slot_ms', 'query',
                         'referenced_tables', 'total_bytes_billed'
                         ] -%}
 

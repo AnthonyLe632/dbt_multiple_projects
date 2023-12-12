@@ -96,6 +96,8 @@ models:
       intermediate:
         +materialized: ephemeral
 
+    bigquery_audit:
+
 seeds:
   dbt_multiple_projects:
     +docs:
