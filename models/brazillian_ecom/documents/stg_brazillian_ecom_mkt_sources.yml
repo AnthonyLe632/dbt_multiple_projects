@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: bigquery
+    description: ''
+    database: spheric-radio-397503
+    schema: brazillian_ecom
+    tags: 
+      - 'be_mkt'
+    tables:
+      - name: marketing_qualified_leads_dataset
+        columns:
+          - name: mql_id
+            description: ''
+          - name: first_contact_date
+            description: ''
+          - name: landing_page_id
+            description: ''
+          - name: origin
+            description: ''
+      - name: closed_deals_dataset
+        columns:
+          - name: mql_id
+            description: ''
+          - name: seller_id
+            description: ''
+          - name: sdr_id
+            description: ''
+          - name: sr_id
+            description: ''
+          - name: won_date
+            description: ''
+          - name: business_segment
+            description: ''
+          - name: lead_type
+            description: ''
+          - name: lead_behaviour_profile
+            description: ''
+          - name: has_company
+            description: ''
+          - name: has_gtin
+            description: ''
+          - name: average_stock
+            description: ''
+          - name: business_type
+            description: ''
+          - name: declared_product_catalog_size
+            description: ''
+          - name: declared_monthly_revenue
+            description: ''

@@ -1,7 +1,7 @@
 WITH 
 raw_products AS (SELECT * FROM {{ source('bigquery', 'products_dataset') }}),
 
-stg_brazillian_ecom__products AS (
+base_brazillian_ecom__customers AS (
     SELECT
         CAST(product_id AS {{ dbt.type_string() }}) AS prod_id
         , CAST(product_category_name AS {{ dbt.type_string() }}) AS prod_cat_name
@@ -15,4 +15,4 @@ stg_brazillian_ecom__products AS (
     FROM raw_products
     WHERE product_category_name IS NOT NULL
 )
-SELECT * FROM stg_brazillian_ecom__products
+SELECT * FROM base_brazillian_ecom__customers

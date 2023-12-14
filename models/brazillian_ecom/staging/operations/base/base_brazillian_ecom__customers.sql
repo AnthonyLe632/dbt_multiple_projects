@@ -1,7 +1,7 @@
 WITH 
 raw_customers AS (SELECT * FROM {{ source('bigquery', 'customers') }}),
 
-stg_brazillian_ecom__customers AS (
+base_brazillian_ecom__customers AS (
     SELECT
         CAST(customer_id AS {{ dbt.type_string()}} ) AS customer_id
         , CAST(customer_unique_id AS {{ dbt.type_string()}} ) AS customer_unique_id
@@ -10,4 +10,4 @@ stg_brazillian_ecom__customers AS (
         , CAST(customer_state AS {{ dbt.type_string() }}) AS customer_state
     FROM raw_customers
 )
-SELECT * FROM stg_brazillian_ecom__customers
+SELECT * FROM base_brazillian_ecom__customers

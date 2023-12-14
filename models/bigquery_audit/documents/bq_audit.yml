@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: bq__bytes_processed_by_project
+    description: '{{ doc("jobs_view") }}'
+    freshness:
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    columns:
+      - name: creation_time
+        description: |
+          - (Partitioning column) Creation time of this job. 
+          - Partitioning is based on the UTC time of this timestamp.
+      - name: project_id
+        description:  The ID of the project.
+      - name: job_id
+        description: The ID of the job. For example, bquxjob_1234.
+      - name: job_type
+        description: |
+          - The type of the job. Can be QUERY, LOAD, EXTRACT, COPY, or NULL. 
+          - A NULL value indicates an internal job, such as a script job statement evaluation or a materialised view refresh.
+      - name: statement_type
+        description: The type of query statement. For example, DELETE, INSERT, SCRIPT, SELECT, or UPDATE.
+      - name: start_time
+        description: | 
+          - The start time of this job, in milliseconds since the epoch. 
+          - This field represents the time when the job transitions from the PENDING state to either RUNNING or DONE.
+      - name: end_time
+        description: |
+          - The end time of this job, in milliseconds since the epoch. 
+          - field represents the time when the job enters the DONE state.
+      - name: state
+        description: Running state of the job. Valid states include PENDING, RUNNING, and DONE.
+      - name: total_bytes_processed
+        description: Total bytes processed by the job.
+      - name: total_slot_ms
+        description: 	Slot milliseconds for the job over its entire duration in the RUNNING state, including retries.
+      - name: query
+        description: SQL query text. Only the JOBS_BY_PROJECT view has the query column.
+      - name: referenced_tables
+        description: Array of tables referenced by the job. Only populated for query jobs.
+      - name: total_bytes_billed
+        description: |
+          - If the project is configured to use on-demand pricing, then this field contains the total bytes billed for the job. 
+          - If the project is configured to use flat-rate pricing, then you are not billed for bytes and this field is informational only.
+          - Note: This column's values are empty for queries that read from tables with row-level access policies. 
+          - For more information, see best practices for row-level security in BigQuery.
+
+  - name:  bq__table_stored_by_project
+    description: '{{ doc("table_storage_view")}}'
+    freshness:
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    columns:
+      - name: project_id
+        description: The ID of the project.
+      - name: table_schema
+        description: The name of the dataset that contains the table or materialised view, also referred to as the datasetId
+      - name: table_name
+        description: The name of the table or materialised view, also referred to as the tableId
+      - name: creation_time
+        description: The table's creation time
+      - name: total_rows
+        description: The total number of rows in the table or materialised view
+      - name: total_partitions
+        description: The number of partitions present in the table or materialised view. Unpartitioned tables return 0.
+      - name: total_logical_gb
+        description: Total number of logical (uncompressed) bytes in the table or materialised view
+      - name: active_logical_gb
+        description: Number of logical (uncompressed) bytes that are less than 90 days old
+      - name: long_term_logical_gb
+        description: number of logical (uncompressed) bytes that are more than 90 days old
+      - name: total_physical_gb
+        description: Total number of physical (compressed) bytes used for storage, including active, long term, time travel (deleted or changed data), and fail-safe (deleted or changed data retained after time travel window) bytes
+      - name: active_physical_gb
+        description: Number of physical (compressed) bytes less than 90 days old, including time travel (deleted or changed data) bytes
+      - name: long_term_physical_gb
+        description:	Number of physical (compressed) bytes more than 90 days old
+      - name: time_travel_physical_gb
+        description: Number of physical (compressed) bytes used by time travel storage (deleted or changed data)
+      - name: storage_last_modified_time
+        description: The most recent time that data was written to the table.
+      - name: table_type
+        description: The type of table. For example, `EXTERNAL` or `BASE TABLE`
+      - name: fail_safe_physical_gb
+        description: Number of physical (compressed) bytes used by fail-safe storage (deleted or changed data)

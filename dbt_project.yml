@@ -50,6 +50,8 @@ models:
             - 'be_ecom'
       intermediate:
         +materialized: ephemeral
+        +docs:
+          node_color: 'navy'
         finance:
           +tags: 
             - 'be_fin'
@@ -93,12 +95,19 @@ models:
 
     utilities:
       +materialized: table
+      +tags: 'uitility_assets'
+      +docs:
+        node_color: "#669900"
       intermediate:
         +materialized: ephemeral
 
     bigquery_audit:
+      +tags: 'bigquery_audit'
+      +docs:
+        node_color: "red"
 
 seeds:
   dbt_multiple_projects:
+    +tags: 'uitility_assets'
     +docs:
       node_color: "orange"

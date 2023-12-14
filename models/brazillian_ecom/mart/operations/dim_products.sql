@@ -1,6 +1,6 @@
 WITH
-stg_brazillian_ecom__products AS (SELECT * FROM {{ ref('stg_brazillian_ecom__products') }}),
-stg_brazillian_ecom__prdct_cat_name_trans AS (SELECT * FROM {{ ref('stg_brazillian_ecom__prdct_cat_name_trans') }}),
+base_brazillian_ecom__products AS (SELECT * FROM {{ ref('base_brazillian_ecom__products') }}),
+base_brazillian_ecom__prdct_cat_name_trans AS (SELECT * FROM {{ ref('base_brazillian_ecom__prdct_cat_name_trans') }}),
 
 dim_products AS (
     SELECT
@@ -12,7 +12,7 @@ dim_products AS (
         , prod_len_cm
         , prod_h_cm
         , prod_w_cm
-    FROM stg_brazillian_ecom__products
-    LEFT JOIN stg_brazillian_ecom__prdct_cat_name_trans USING(prod_cat_name)
+    FROM base_brazillian_ecom__products
+    LEFT JOIN base_brazillian_ecom__prdct_cat_name_trans USING(prod_cat_name)
 )
 SELECT * FROM dim_products
