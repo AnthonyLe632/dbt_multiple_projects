@@ -13,6 +13,8 @@ models:
           - Partitioning is based on the UTC time of this timestamp.
       - name: project_id
         description:  The ID of the project.
+      - dataset_id:
+        description: The ID of the dataset
       - name: job_id
         description: The ID of the job. For example, bquxjob_1234.
       - name: job_type
