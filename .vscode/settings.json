@@ -1,6 +1,7 @@
 {
     "dbt.queryLimit": 10,
     "dbt.enableNewLineagePanel": true,
-    "dbt.dbtPythonPathOverride": "\"C:\\Users\\ltlon\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"",
-    "dbt.prefixGenerateModel": "stg"
+    "dbt.dbtPythonPathOverride": "",
+    "dbt.prefixGenerateModel": "stg",
+    "dbt.queryScale": 0.72
 }

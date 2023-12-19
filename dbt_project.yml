@@ -56,6 +56,8 @@ models:
           +tags: 
             - 'be_fin'
             - 'be_ecom'
+        marketing:
+          +tags: 'be_mkt'
       mart:
         +materialized: table
         +docs:
