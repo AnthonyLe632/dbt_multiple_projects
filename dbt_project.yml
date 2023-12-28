@@ -97,19 +97,20 @@ models:
 
     utilities:
       +materialized: table
-      +tags: 'uitility_assets'
+      +tags: 'utility_assets'
       +docs:
         node_color: "#669900"
       intermediate:
         +materialized: ephemeral
 
     bigquery_audit:
+      +schema: bigquery_audit
       +tags: 'bigquery_audit'
       +docs:
         node_color: "red"
 
 seeds:
   dbt_multiple_projects:
-    +tags: 'uitility_assets'
+    +tags: 'utility_assets'
     +docs:
       node_color: "orange"
